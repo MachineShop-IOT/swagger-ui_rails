@@ -93,7 +93,8 @@
         e = exports;
       }
       e.authorizations.apply(obj);
-      console.log(JSON.stringify(obj));
+      console.log('About to SwaggerHttp().execute() with the following:');
+      console.log(obj);
       new SwaggerHttp().execute(obj);
       return this;
     };
@@ -334,6 +335,8 @@
           e = exports;
         }
         e.authorizations.apply(obj);
+        console.log('In SwaggerResource. About to execute with the following:');
+        console.log(obj);
         new SwaggerHttp().execute(obj);
       }
     }
@@ -1335,6 +1338,8 @@
         return cb.response(out);
       };
       $.support.cors = true;
+      console.log('actually executing with jquery with the following:');
+      console.log(obj);
       return $.ajax(obj);
     };
 
