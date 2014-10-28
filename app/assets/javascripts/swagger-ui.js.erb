@@ -1430,6 +1430,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     MainView.prototype.addResource = function(resource) {
+      console.log('The resource for the view:');
+      console.log(resource);
       var resourceView;
       resourceView = new ResourceView({
         model: resource,
