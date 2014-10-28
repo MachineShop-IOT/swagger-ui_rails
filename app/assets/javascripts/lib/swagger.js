@@ -335,9 +335,14 @@
           e = exports;
         }
         e.authorizations.apply(obj);
-        console.log('In SwaggerResource. About to execute with the following:');
-        console.log(obj);
-        new SwaggerHttp().execute(obj);
+        if(SwaggerUi.onDemand){
+          // attach the object to the link and create onClick
+          console.log("Need to attach this to the appropriate link:");
+          console.log(obj);
+        } else {
+          new SwaggerHttp().execute(obj);
+        }
+        
       }
     }
 
