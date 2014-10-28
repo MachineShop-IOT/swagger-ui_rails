@@ -93,6 +93,7 @@
         e = exports;
       }
       e.authorizations.apply(obj);
+      console.log(JSON.stringify(obj));
       new SwaggerHttp().execute(obj);
       return this;
     };
