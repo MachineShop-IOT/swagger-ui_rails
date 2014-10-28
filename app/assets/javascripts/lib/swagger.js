@@ -213,7 +213,7 @@
       _ref = this.apis;
       for (resource_name in _ref) {
         resource = _ref[resource_name];
-        if (resource.ready == null) {
+        if (resource.ready == null && !this.on_demand) {
           return false;
         }
       }
