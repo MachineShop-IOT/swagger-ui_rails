@@ -149,6 +149,9 @@ var Docs = {
     $('li#resource_' + resource).addClass('active');
 
     var elem = $('li#resource_' + resource + ' ul.endpoints');
+
+    // JC: add function here to load docs for this resource if they haven't been loaded already
+
     elem.slideDown();
   },
 
@@ -1064,7 +1067,15 @@ function program1(depth0,data) {
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "');\">";
+    + "');\" ";
+  if(window.swaggerUi.on_demmand){
+    
+    if (stack1 = helpers.url) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+    else { stack1 = depth0.url; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+
+    buffer += "data-url=\"" + stack1 + "\" data-clicked=false ";
+  }
+">";
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
@@ -1211,7 +1222,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       return _ref;
     }
     SwaggerUi.prototype.routeObjects = {};
-    
+
     SwaggerUi.prototype.dom_id = "swagger_ui";
 
     SwaggerUi.prototype.options = null;
