@@ -341,7 +341,7 @@
           // attach the object to the link and create onClick
           console.log("Need to attach this to the appropriate link:");
           console.log(obj);
-          window.swaggerUi.routeObjects[obj.url] = obj;
+          window.swaggerUi.routeObjects[obj.url.split('/').pop()] = obj;
         } else {
           new SwaggerHttp().execute(obj);
         }
