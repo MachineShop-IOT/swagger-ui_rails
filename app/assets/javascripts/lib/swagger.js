@@ -93,7 +93,7 @@
         e = exports;
       }
       e.authorizations.apply(obj);
-      new SwaggerHttp().execute(obj);
+      //new SwaggerHttp().execute(obj);
       return this;
     };
 
