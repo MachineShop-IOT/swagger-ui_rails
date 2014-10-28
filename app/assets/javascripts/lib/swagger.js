@@ -213,7 +213,7 @@
       _ref = this.apis;
       for (resource_name in _ref) {
         resource = _ref[resource_name];
-        if (!resource.ready && !this.options.on_demand) {
+        if (!resource.ready && !window.swaggerUi.options.on_demand) {
           return false;
         }
       }
