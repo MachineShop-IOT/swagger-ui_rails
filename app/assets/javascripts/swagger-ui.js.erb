@@ -1446,7 +1446,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         id: 'resource_' + resource.name,
         className: 'resource'
       });
-      var resource_view = $(resourceView.render().el).find('a').data('url',url).data('retrieved',false);
+      var resource_view = $(resourceView.render().el).find('a').data('url',resource.url).data('retrieved',false);
       // var links = $(resource_view).find('a');
       // var url = resource.url;
       // $(links).data('url',url).data('retrieved',false);
