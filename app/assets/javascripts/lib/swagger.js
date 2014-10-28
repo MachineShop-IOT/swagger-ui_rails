@@ -335,7 +335,7 @@
           e = exports;
         }
         e.authorizations.apply(obj);
-        if(SwaggerUi.onDemand){
+        if(SwaggerUi.options.onDemand){
           // attach the object to the link and create onClick
           console.log("Need to attach this to the appropriate link:");
           console.log(obj);
