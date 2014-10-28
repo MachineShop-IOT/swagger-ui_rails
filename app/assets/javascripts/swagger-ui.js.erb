@@ -12,7 +12,7 @@
 
 $(function() {
 
-  
+
 
 
   // Helper function for vertically aligning DOM elements
@@ -1210,7 +1210,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       _ref = SwaggerUi.__super__.constructor.apply(this, arguments);
       return _ref;
     }
-
+    SwaggerUi.prototype.routeObjects = {};
+    
     SwaggerUi.prototype.dom_id = "swagger_ui";
 
     SwaggerUi.prototype.options = null;

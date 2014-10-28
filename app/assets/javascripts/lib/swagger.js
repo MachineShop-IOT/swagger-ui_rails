@@ -11,7 +11,7 @@
   };
 
   SwaggerApi = (function() {
-    SwaggerApi.prototype.routeObjects = {};
+    
 
     SwaggerApi.prototype.url = "http://api.wordnik.com/v4/resources.json";
 
