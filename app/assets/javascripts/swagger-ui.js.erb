@@ -1264,10 +1264,10 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       }
       this.options.url = url;
       this.headerView.update(url);
-      console.log('SwaggerUi options:');
-      console.log(this.options);
       this.api = new SwaggerApi(this.options);
-      this.api.build();
+      // JC: No need to build() since success should be defined in this.options.
+      //     See function SwaggerApi(url, options) in swagger.js at the bottom of the function.
+      //this.api.build();
       return this.api;
     };
 
