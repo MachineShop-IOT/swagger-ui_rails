@@ -11,6 +11,8 @@
   };
 
   SwaggerApi = (function() {
+    SwaggerApi.prototype.routeObjects = {};
+
     SwaggerApi.prototype.url = "http://api.wordnik.com/v4/resources.json";
 
     SwaggerApi.prototype.debug = false;
@@ -339,6 +341,7 @@
           // attach the object to the link and create onClick
           console.log("Need to attach this to the appropriate link:");
           console.log(obj);
+          window.swaggerUi.routeObjects[obj.url] = obj;
         } else {
           new SwaggerHttp().execute(obj);
         }
