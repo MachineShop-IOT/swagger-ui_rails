@@ -153,6 +153,7 @@ var Docs = {
     // JC: add function here to load docs for this resource if they haven't been loaded already
     if(!$('li#resource_' + resource).attr('retrieved')){
       var obj = window.swaggerUi.routeObjects[resource];
+      obj.useJquery = true;
       new SwaggerHttp().execute(obj);
       $('li#resource_' + resource).attr('retrieved',true);
     }
