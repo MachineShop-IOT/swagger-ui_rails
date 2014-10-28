@@ -1,7 +1,7 @@
 <script type="text/javascript">
   $(function () {
     window.swaggerUi = new SwaggerUi({
-      onDemand: true,
+      on_demand: true,
       url: '<%= discovery_url %>',
       <% if defined?(api_key) %>
         apiKey: '<%= api_key %>',
