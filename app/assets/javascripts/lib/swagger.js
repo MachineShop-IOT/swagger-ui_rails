@@ -25,7 +25,7 @@
 
     SwaggerApi.prototype.info = null;
 
-    SwaggerApi.prototype.useJQuery = null;
+    SwaggerApi.prototype.useJQuery = true;
 
     function SwaggerApi(url, options) {
       if (options == null) {
