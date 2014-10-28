@@ -1447,7 +1447,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         className: 'resource'
       });
       var resource_view = resourceView.render().el;
-      $(resource_view).find('ul.endpoints').data('url',resource.url).data('retrieved',false);
+      var links = $(resource_view).find('a');
+      $(links).data('url',resource.url).data('retrieved',false);
       var ret = $('#resources').append(resource_view);
       return ret;
     };
