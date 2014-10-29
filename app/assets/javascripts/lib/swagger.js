@@ -4,6 +4,8 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
+  var stop_running = false;
+
   log = function() {
     if (window.console) {
       return console.log.apply(console, arguments);
@@ -210,18 +212,39 @@
       if (this.apis == null) {
         return false;
       }
-      _ref = this.apis;
-      for (resource_name in _ref) {
-        resource = _ref[resource_name];
-        if (!resource.ready && !window.swaggerUi.options.on_demand) {
+      if(!window.swaggerUi.options.on_demand){
+        _ref = this.apis;
+        for (resource_name in _ref) {
+          resource = _ref[resource_name];
+          if (!resource.ready) {
+            return false;
+          }
+        }
+        this.setConsolidatedModels();
+        this.ready = true;
+        if (this.success != null) {
+          return this.success();
+        }
+      } else {
+        if(stop_running){
+          stop_running = false;
           return false;
         }
+        _ref = this.apis;
+        for (resource_name in _ref) {
+          resource = _ref[resource_name];
+          if ($('li#resource_' + resource).attr('retrieved') == 'true') {
+            resource.ready = true;
+          }
+        }
+        this.setConsolidatedModels();
+        this.ready = true;
+        if (this.success != null) {
+          this.success();
+          stop_running = true;
+        }
       }
-      this.setConsolidatedModels();
-      this.ready = true;
-      if (this.success != null) {
-        return this.success();
-      }
+      
     };
 
     SwaggerApi.prototype.fail = function(message) {
