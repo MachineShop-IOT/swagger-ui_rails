@@ -14,8 +14,6 @@
 
   SwaggerApi = (function() {
     
-    SwaggerApi.prototype.stop_running = false;
-
     SwaggerApi.prototype.url = "http://api.wordnik.com/v4/resources.json";
 
     SwaggerApi.prototype.debug = false;
@@ -213,38 +211,19 @@
       if (this.apis == null) {
         return false;
       }
-      if(!window.swaggerUi.options.on_demand){
-        _ref = this.apis;
-        for (resource_name in _ref) {
-          resource = _ref[resource_name];
-          if (!resource.ready) {
-            return false;
-          }
-        }
-        this.setConsolidatedModels();
-        this.ready = true;
-        if (this.success != null) {
-          return this.success();
-        }
-      } else {
-        if(this.stop_running){
+      _ref = this.apis;
+      for (resource_name in _ref) {
+        resource = _ref[resource_name];
+        if (!resource.ready) {
           return false;
-        }
-        this.stop_running = true;
-        _ref = this.apis;
-        for (resource_name in _ref) {
-          resource = _ref[resource_name];
-          if ($('li#resource_' + resource).attr('retrieved') == 'true') {
-            resource.ready = true;
+        } else {
+          this.setConsolidatedModels();
+          this.ready = true;
+          if (this.success != null) {
+            return this.success();
           }
         }
-        this.setConsolidatedModels();
-        this.ready = true;
-        if (this.success != null) {
-          return this.success();
-        }
-      }
-      
+      }   
     };
 
     SwaggerApi.prototype.fail = function(message) {
