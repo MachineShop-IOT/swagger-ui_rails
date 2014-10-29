@@ -4,7 +4,7 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  var stop_running = false;
+  
 
   log = function() {
     if (window.console) {
@@ -14,6 +14,7 @@
 
   SwaggerApi = (function() {
     
+    SwaggerApi.prototype.stop_running = false;
 
     SwaggerApi.prototype.url = "http://api.wordnik.com/v4/resources.json";
 
@@ -226,10 +227,10 @@
           return this.success();
         }
       } else {
-        if(stop_running){
+        if(this.stop_running){
           return false;
         }
-        stop_running = true;
+        this.stop_running = true;
         _ref = this.apis;
         for (resource_name in _ref) {
           resource = _ref[resource_name];
