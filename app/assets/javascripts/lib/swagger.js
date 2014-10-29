@@ -227,9 +227,9 @@
         }
       } else {
         if(stop_running){
-          stop_running = false;
           return false;
         }
+        stop_running = true;
         _ref = this.apis;
         for (resource_name in _ref) {
           resource = _ref[resource_name];
@@ -240,8 +240,7 @@
         this.setConsolidatedModels();
         this.ready = true;
         if (this.success != null) {
-          this.success();
-          stop_running = true;
+          return this.success();
         }
       }
       
