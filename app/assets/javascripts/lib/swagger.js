@@ -215,14 +215,14 @@
       for (resource_name in _ref) {
         resource = _ref[resource_name];
         if (!resource.ready) {
-          return false;
-        } else {
-          this.setConsolidatedModels();
-          this.ready = true;
-          if (this.success != null) {
-            return this.success();
-          }
+          resource.ready = true;
+        } 
+        this.setConsolidatedModels();
+        this.ready = true;
+        if (this.success != null) {
+          return this.success();
         }
+        
       }   
     };
 
